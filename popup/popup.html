@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CvToLetter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="../assets/logo.svg" alt="CvToLetter Logo" class="logo">
+      <h1>CvToLetter</h1>
+    </div>
+
+    <!-- Login State -->
+    <div id="login-state" class="hidden">
+      <button id="login-button" class="btn btn-primary">
+        <svg class="google-icon" viewBox="0 0 24 24">
+          <path d="M12.545 10.239v3.821h5.445c-0.712 2.315-2.647 3.972-5.445 3.972-3.332 0-6.033-2.701-6.033-6.032s2.701-6.032 6.033-6.032c1.498 0 2.866 0.549 3.921 1.453l2.814-2.814c-1.796-1.677-4.203-2.701-6.735-2.701-5.553 0-10.054 4.501-10.054 10.054s4.501 10.054 10.054 10.054c5.553 0 9.443-3.899 9.443-9.398 0-0.772-0.098-1.521-0.226-2.223h-9.217z" />
+        </svg>
+        Sign in with Google
+      </button>
+    </div>
+
+    <!-- User Profile State -->
+    <div id="user-profile" class="hidden">
+      <div class="user-info">
+        <img id="user-avatar" src="" alt="User Avatar" class="avatar">
+        <div>
+          <p id="user-name" class="user-name"></p>
+          <p id="user-email" class="user-email"></p>
+        </div>
+      </div>
+      <div class="credits-container">
+        <p>Credits: <span id="user-credits" class="credits-value">0</span></p>
+        <a href="https://cvtoletter.com/pricing" target="_blank" class="btn btn-small">Buy Credits</a>
+      </div>
+    </div>
+
+    <!-- Job Description Section -->
+    <div id="job-section">
+      <h2>Job Description</h2>
+      <div class="detection-status" id="detection-status">
+        Scanning page for job descriptions...
+      </div>
+      <textarea id="job-description" placeholder="Job description will appear here, or you can paste it manually"></textarea>
+      
+      <button id="generate-button" class="btn btn-primary" disabled>
+        Generate Cover Letter (1 Credit)
+      </button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result-section" class="hidden">
+      <h2>Your Cover Letter</h2>
+      <div class="result-container">
+        <pre id="cover-letter-text"></pre>
+        <div class="action-buttons">
+          <button id="copy-button" class="btn btn-secondary">Copy to Clipboard</button>
+          <button id="new-button" class="btn btn-secondary">Create New</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading-state" class="hidden">
+      <div class="spinner"></div>
+      <p>Generating your cover letter...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="hidden">
+      <div class="error-icon">!</div>
+      <p id="error-message"></p>
+      <button id="error-dismiss" class="btn btn-secondary">Dismiss</button>
+    </div>
+
+    <div class="footer">
+      <a href="https://cvtoletter.com/profile" target="_blank">My Account</a> | 
+      <a href="https://cvtoletter.com/" target="_blank">Website</a> | 
+      <button id="logout-button" class="text-button">Logout</button>
+    </div>
+  </div>
+  
+  <script src="../utils/auth.js"></script>
+  <script src="../utils/api.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
